@@ -1,5 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View , Button } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+
+/********************** Screens **********************/
+import HomeScreen from './components/HomeScreen';
+
+const StackNav = createStackNavigator( {
+	Home: {
+		screen: HomeScreen
+	}
+} );
 
 export default class App extends React.Component {
   render() {
