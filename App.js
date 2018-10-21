@@ -4,19 +4,27 @@ import { createStackNavigator } from 'react-navigation';
 
 /********************** Screens **********************/
 import HomeScreen from './components/HomeScreen';
+import TodoList from './components/TodoListScreen';
 
 const StackNav = createStackNavigator( {
 	Home: {
 		screen: HomeScreen
+	},
+	TodoList: {
+		screen: TodoList,
 	}
-} );
+} , {
+	initialRouteName: "Home",
+	navigationOptions: {
+		gesturesEnabled: false,
+		header: null
+	}
+});
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <StackNav />
     );
   }
 }
