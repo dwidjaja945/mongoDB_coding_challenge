@@ -21,7 +21,7 @@ class TodoList extends Component {
         this.getListData();
     }
 
-    getListData() {
+    async getListData() {
         const listData = await axios.get("/api/get_list_data");
 
         this.setState({
