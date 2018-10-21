@@ -7,12 +7,17 @@ import {
 } from "react-native";
 
 class HomeScreen extends Component {
+
+    navigate_to_todoList = () => {
+        this.props.navigation.navigate("TodoList");
+    }
+
     render() {
         return (
             <View style={styles.container}>
                 <Text>Welcome to the Backend Challenge.</Text>
                 <Text>Please click below to navigate to TodoList</Text>
-                <Button title="Navigate to TodoList"/>
+                <Button onPress={this.navigate_to_todoList} title="Navigate to TodoList"/>
             </View>
         );
     }
