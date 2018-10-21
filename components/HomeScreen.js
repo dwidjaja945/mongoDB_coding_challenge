@@ -15,8 +15,8 @@ class HomeScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Welcome to the Backend Challenge.</Text>
-                <Text>Please click below to navigate to TodoList</Text>
+                <Text style={styles.title}>Welcome to the Backend Challenge.</Text>
+                <Text style={styles.instructions} >Please click below to navigate to TodoList</Text>
                 <Button onPress={this.navigate_to_todoList} title="Navigate to TodoList"/>
             </View>
         );
@@ -29,5 +29,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    title: {
+        fontSize: 20
+    },
+    instructions: {
+        fontSize: 15
     }
 });
