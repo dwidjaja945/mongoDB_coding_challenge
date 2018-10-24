@@ -13,21 +13,27 @@ class TodoList extends Component {
     constructor(props) {
         super(props);
         this.state= {
-            listData: ["Default Item one", 'Default Item two', 'Default Item three', 'Default Item four']
+            listData: []
         }
     }
 
     componentDidMount() {
-        const listData = axios.get("/api/getListData");
-
-        this.setState({
-            listData
-        })
+        this.getListData();
     }
 
-    deleteItem = (item) => {
-        axios.delete( "/api/delete_item" , { item } );
-        console.log("Item deleted:" , item );
+    async getListData() {
+        const listData = await axios.get("/api/get_list_data");
+
+        this.setState({
+            listData: listData.data.data
+        });
+    }
+
+    deleteItem = async (item) => {
+        await axios.delete( "/api/delete_item" , { item } );
+        console.log("Item deleted:", item);
+        
+        this.getListData();
     }
 
     render() {
@@ -39,8 +45,8 @@ class TodoList extends Component {
         const todoList = listData.map((item, itemIndex) => {
             return (
                 <View style={styles.list_item} key={itemIndex}>
-                    <Text onPress={ () => { navigate( "TodoListItem" , {item} ) } } style={styles.item} >{item}</Text>
-                    <Text onPress={ () => {this.deleteItem(item)} } > X </Text>
+                    <Text onPress={ () => { navigate( "TodoListItem" , {item} ) } } style={styles.item} >{item.item}</Text>
+                    <Text onPress={ () => {this.deleteItem(item.item)} } > X </Text>
                 </View>
             )
         });
