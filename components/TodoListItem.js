@@ -26,7 +26,10 @@ class TodoListItem extends Component {
 	}
 
 	addItem = (newItem) => {
-		axios.post("/api/addItem", { newItem });
+		const item = { "name": newItem }
+		axios.post("/api/addItem", { item })
+			.then(result => console.log('Added New Item'))
+			.catch(err => console.log("Failed to Add New Item"));
 
 		this.clearInput();
 	}
