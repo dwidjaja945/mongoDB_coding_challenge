@@ -24,7 +24,9 @@ class AddItem extends Component {
     }
 
     addItem = (newItem) => {
-        axios.post("/api/addItem" , { newItem } );
+        axios.post("/api/addItem" , { "name": newItem } )
+            .then(result => console.log('Added New Item: ', newItem))
+            .catch(err => console.log("Failed to Add New Item: ", newItem));
 
         this.clearInput();
     }
